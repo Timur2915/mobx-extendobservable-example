@@ -5,14 +5,43 @@
       "title": "Sample Konfabulator Widget",
       "name": "main_window",
       "width": 500,
-      "height": 500
+      "height": 500,
+      "params": [
+        {
+          "name": "param_w0",
+          "visible": false
+        },
+        {
+          "name": "param_w1",
+          "visible": false
+        },
+        {
+          "name": "param_w2",
+          "visible": false
+        }
+      ]
     },
     "image": {
       "src": "Images/Sun.png",
       "name": "sun1",
       "hOffset": 250,
       "vOffset": 250,
-      "alignment": "center"
+      "alignment": "center",
+
+      "params": [
+        {
+          "name": "param_i0",
+          "visible": true
+        },
+        {
+          "name": "param_i1",
+          "visible": false
+        },
+        {
+          "name": "param_i2",
+          "visible": true
+        }
+      ]
     },
     "text": {
       "data": "Click Here",

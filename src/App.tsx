@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { ExampleStore } from './store/ExampleStore';
 import { observer } from 'mobx-react';
+import { Param } from './Param';
 
 @observer
 class App extends Component {
@@ -13,11 +14,18 @@ class App extends Component {
   }
 
   render() {
+    console.log('render');
+
     let windowTitle = 'unknown';
+    let windowParams = [];
+    let imageParams = [];
+
     if (this.exampleStore && this.exampleStore.data) {
       const widget = (this.exampleStore.data as any).widget;
       if (widget) {
         windowTitle = widget.window.title;
+        windowParams = widget.window.params;
+        imageParams = widget.image.params;
       }
     }
 
@@ -29,12 +37,32 @@ class App extends Component {
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
 
-          <p>Example from data:</p>
+          <p>Example field from data:</p>
           <p>data.widget.window.title: {windowTitle}</p>
 
           <button onClick={() => this.exampleStore.updateWindowTitle()}>
             Update data.widget.window.title
           </button>
+
+          <br />
+
+          <p>Example array render from data:</p>
+          <p>data.widget.window.params</p>
+
+          {windowParams.map((item: any, index: any) =>
+            <Param key={index} name={item.name} visible={item.visible} /> )}
+
+          <button onClick={() => this.exampleStore.updateParamsVisibility()}>
+            Change random params visibility
+          </button>
+
+          <br />
+
+          <p>Example array render from data:</p>
+          <p>data.widget.image.params</p>
+
+          {imageParams.map((item: any, index: any) =>
+            <Param key={index} name={item.name} visible={item.visible} /> )}
 
           <br />
 
